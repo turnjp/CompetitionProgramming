@@ -1,8 +1,10 @@
     //問題URL
-    //
+    //http://abc076.contest.atcoder.jp/tasks/abc076_c
 
     //解き方メモ
-    //
+    //tが当てはまる場所を探し、残り?は辞書順先頭のaで埋める
+    //tが２箇所以上に当てはまる場合、なるべく後ろに当てはめる（当てはめなかった側はaで埋まるため、そちらが辞書順で先になる）
+    //そのため、tが当てはまる場所は後方から探す
     
     #include<iostream>
     #include<string>
@@ -10,65 +12,42 @@
 
     int main(){
         string sd,t;
-        string s;
 
         //sd,t入力
         cin >> sd >> t;
 
-        //sに複製
-        s.replace(0,sd.length(),sd);
+        bool flag;
+        for(int i = sd.length()-t.length(); i>=0; i--){ //i:tが当てはまるか試行する部分文字列の先頭位置
+            string ts = sd.substr(i,t.length()); //ts:sの部分文字列。tが当てはまるか判定する対象
 
-        //tがまだ存在しない場合、挿入場所を探す
-        if(sd.find(t) == -1){
-            int qcnt=0;
-            //後ろからtが当てはまる箇所を検索
-            int i = sd.length()-1;
-            for(; i>=0; i--){
-                if(sd[i]=='?'){
-                    qcnt++;
-                    //tの文字数分の連続?を見つけた場合
-                    if(qcnt >= t.length()){
-                        s.replace(i,t.length(),t);
-                        break; //t当てはめ終了
-                    }
-                } else {
-                    //?以外の文字について、tが当てはめれるか確認
-                    //現在位置iから0〜qcnt個の?がtの一部と置き換わる可能性がある
-                    int tmp_qcnt = qcnt;
-                    for(; tmp_qcnt >= 0; tmp_qcnt--){
-                        int j = 0;
-                        for(; j+tmp_qcnt<t.length();j++){
-                            if(s[i-j] != t[(t.length()-1)-(j+tmp_qcnt)] || s[i-j] != '?'){
-                                break; //当てはまらないこと確定
-                            }
-                        }
-                        if(j+tmp_qcnt == t.length()){
-                            s.replace(i-j,t.length(),t);
-                            break; //t当てはめ終了
-                        }
-                    }
-                    //LOOP途中で終了
-                    if(tmp_qcnt != 0){
-                        break; //t当てはめ終了
-                    }
-                    qcnt=0;
-
+            //tsにtが当てはまるか判定。当てはならない時にbreak
+            flag = true;
+            for(int j=0;j<ts.length();j++){
+                if(ts[j] != t[j] && ts[j] != '?') {
+                    flag = false;
+                    break;
                 }
             }
-            if(i == 0){
-                s = "UNRESTORABLE";
+            if(flag){ //一致した場合
+                sd.replace(i,t.length(),t); //tに置き換え
+                break;
             }
         }
 
-        //?を全てa（辞書順先頭文字）に置換
-        for(int i=0;i<s.length();i++){
-            if(s[i]=='?'){
-                s[i] = 'a';
+        //tが当てはまった場合
+        if(flag){
+            //?を全てa（辞書順先頭文字）に置換
+            for(int i=0;i<sd.length();i++){
+                if(sd[i]=='?'){
+                    sd[i] = 'a';
+                }
             }
+        } else {
+            sd = "UNRESTORABLE";
         }
 
         //出力
-        cout << s << endl;
+        cout << sd << endl;
 
         return 0;
     }
