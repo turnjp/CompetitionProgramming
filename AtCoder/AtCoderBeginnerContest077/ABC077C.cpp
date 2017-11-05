@@ -1,80 +1,45 @@
 //問題URL
-//
+//http://abc077.contest.atcoder.jp/tasks/arc084_a
 
 //解き方メモ
-//
+//a<b,b<c　を考える際、a,b,cの順で考えるとN^3になる。
+//bを中心に、a<bとb<cを考えると、N^2となる。
+//ただし、それでも計算量が大きいため、a,cの探索はライブラリ（２分探索）を使用する
+//計算量がNlogNになる
     
 #include<iostream>
 #include<vector>
 #include<algorithm>
 using namespace std;
 
+#define A (abc[0])
+#define B (abc[1])
+#define C (abc[2])
+
 int main(){
   int n;
 
-  
-
-
   //input
   cin >> n;
-  vector< vector<int> > abc(3,vector<int>(n));
+  vector< vector<long long> > abc(3,vector<long long>(n));
+  vector< vector<long long> > a,b,c;
 
   for(int i=0;i<3;i++){
     for(int j=0;j<n;j++){
       cin >> abc[i][j];
     }
-  }
-  
-  //sort A,B,C
-  for(int i=0;i<3;i++){
     sort(abc[i].begin(),abc[i].end());
   }
 
-  //
-  int cnt_all = 0; //結果
-  vector<int> cnt_b(n,-1);
-  //int j_start = 0;
-  //int k_start = 0;
-  
-  for(int i=0;i<n;i++){
-    //bool j_flag=false;
-    vector<int>::iterator it1 = upper_bound(abc[1].begin(),abc[1].end(),abc[0][i]);
-    
-    for(;it1 != abc[1].end();++it1){
-      //Aiより大きなBjを見つけた
-      if(abc[0][i] < *it1){
-	//if(!j_flag){
-	//  j_flag = true;
-	//  j_start = j;
-	//}
-	int j = it1-abc[1].begin();
-	if(cnt_b[j] > -1){
-	  //Bjからの組み合わせ数が計算済み
-	  cnt_all += *it1;
-	} else {
-	  //Bjからの組み合わせ数を計算
-	  //bool k_flag=false;
-	  vector<int>::iterator it2 = upper_bound(abc[2].begin(),abc[2].end(),*it1);	  
-	  cnt_b[j] = 0; //Bjより大きなCkが見つからなかった時、Bjの組み合わせ数0
-	  for(;it2 != abc[2].end();++it2){
-	    //if(!k_flag){
-	    //k_flag = true;
-	    //  k_start = k;
-	    //}
-	    //Bjより大きなCkを見つけた
-	    if(*it1 < *it2){
-	      int k = it2-abc[2].begin();
-	      cnt_b[j] = n-k;
-	      cnt_all += n-k;
-	      break;
-	    }
-	  }
-	}
-      }
-    }
+  long long result = 0;
+  for (int i = 0; i < n; i++) {
+    long long a_cnt = lower_bound(A.begin(),A.end(),B[i]) - A.begin();
+    long long b_cnt = C.size() - (upper_bound(C.begin(),C.end(),B[i]) - C.begin());
+
+    result += a_cnt * b_cnt;
   }
 
-  cout << cnt_all << endl;
-
+  cout << result << endl;
+  
   return 0;
 }
