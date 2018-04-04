@@ -1,0 +1,23 @@
+graph g {
+      graph[label="k=6の場合"];
+
+      "0" -- "1" [label="+1"];
+      "0" -- "10" [label="+10"];
+      "0" -- "100" [label="+100"];
+      "1" -- "2" [label="+1"];
+      "1" -- "11A" [label="+10"];
+      "1" -- "101A" [label="+100"];
+      "10" -- "20" [label="+10"];
+      "2" -- "3" [label="+1"];
+      "2" -- "12" [label="+10"];
+
+      "100"[style=filled,fillcolor=gray];
+
+      "11A"[label="11"];
+
+      "101A"[label="101",style=filled,fillcolor=gray];
+      "20"[style=filled,fillcolor=gray];
+
+      "12"[style=filled,fillcolor="yellow"];
+      
+      }

@@ -1,0 +1,40 @@
+graph g {
+      graph[label="k=6の場合"];
+
+      "0" -- "1" [label="(0+1)*1"];
+      "0" -- "10(4)" [label="(0+1)*10"];
+      "0" -- "100(4)" [label="(0+1)*100"];
+      "0" -- "...1";
+      "1" -- "2" [label="(1+1)"];
+      "1" -- "20(2)" [label="(1+1)*10"];
+      "1" -- "200" [label="(1+1)*100"];
+      "1" -- "...2";
+      "10(4)" -- "11(5)" [label="(10+1)"];
+      "10(4)" -- "110(2)" [label="(10+1)*10"];
+      "10(4)" -- "1100" [label="(10+1)*100"];
+      "10(4)" -- "...3";
+      "100(4)" -- "101" [label="(100+1)"];      
+      "100(4)" -- "1010" [label="(100+1)*10"];      
+      "100(4)" -- "10100" [label="(100+1)*100"];
+      "100(4)" -- "...4";
+      "2" -- "3" [label="(2+1)"];
+      "2" -- "30" [label="(2+1)*10"];
+
+      "...1"[label="...",style=filled,fillcolor="#696969"];
+      "...2"[label="...",style=filled,fillcolor="#696969"];
+      "...3"[label="...",style=filled,fillcolor="#696969"];
+      "...4"[label="...",style=filled,fillcolor="#696969"];
+
+      "30"[style=filled,fillcolor="yellow"];
+      "100(4)"[style=filled,fillcolor="#dcdcdc"];
+      "20(2)"[style=filled,fillcolor="#dcdcdc"];
+      "110(2)"[style=filled,fillcolor="#dcdcdc"];
+      "200"[style=filled,fillcolor="#696969"];
+      "1100"[style=filled,fillcolor="#696969"];
+      "200"[style=filled,fillcolor="#696969"];
+      "1100"[style=filled,fillcolor="#696969"];
+      "101"[style=filled,fillcolor="#696969"];
+      "1010"[style=filled,fillcolor="#696969"];
+      "10100"[style=filled,fillcolor="#696969"];                  
+
+      }

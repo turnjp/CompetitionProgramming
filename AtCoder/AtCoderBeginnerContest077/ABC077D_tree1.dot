@@ -1,0 +1,39 @@
+graph g {
+      graph[label="k=6の場合"];
+
+      "0" -- "1" [label="+1"];
+      "0" -- "10" [label="+10"];
+      "0" -- "100" [label="+100"];
+      "0" -- "...1";
+      "1" -- "2" [label="+1"];
+      "1" -- "11A" [label="+10"];
+      "1" -- "101A" [label="+100"];
+      "1" -- "...2";
+      "10" -- "11B" [label="+1"];
+      "10" -- "20" [label="+10"];
+      "10" -- "110A" [label="+100"];
+      "10" -- "...3";
+      "100" -- "101B" [label="+1"];      
+      "100" -- "110B" [label="+10"];      
+      "100" -- "200" [label="+100"];
+      "100" -- "...4";
+      "2" -- "3" [label="+1"];
+      "2" -- "12" [label="+10"];
+
+      "...1"[label="..."];
+      "...2"[label="..."];
+      "...3"[label="..."];
+      "...4"[label="..."];
+
+      "11A"[label="11"];
+      "11B"[label="11",style="filled",fillcolor="gray"];
+
+      "101A"[label="101"];
+      "101B"[label="101",style="filled",fillcolor="gray"];
+
+      "110A"[label="110"];
+      "110B"[label="110",style="filled",fillcolor="gray"];
+
+      "12"[style=filled,fillcolor="yellow"];
+      
+      }
