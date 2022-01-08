@@ -4,6 +4,7 @@
     // 詳細情報は次を確認してください: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+
         {
             "name": "(lldb) Launch",
             //"type": "cppdbg",
@@ -12,13 +13,13 @@
             //"targetArchitecture": "x86_64",
             "program": "${fileDirname}/a.out",
             "args": [],
-            //"stopAtEntry": false,
+            "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            "stdio": ["${fileDirname}/input.txt","${fileDirname}/output.txt"]
-            //"console": "integratedTerminal",
-            //"environment": []
-            //"externalConsole": true,
-            //"MIMode": "lldb"
+            //"stdio": ["${fileDirname}/input.txt","${fileDirname}/output.txt"]
+            "console": "integratedTerminal",
+            "environment": [],
+            "externalConsole": true,
+            "MIMode": "lldb"
         }
     ]
 }
