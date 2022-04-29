@@ -4,7 +4,7 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "AtCoder build C++",
+            "label": "Competition programming build C++ on Mac",
             "type": "shell",
             "command": "g++",
             "args": [

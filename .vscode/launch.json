@@ -6,16 +6,13 @@
     "configurations": [
 
         {
-            "name": "(lldb) Launch",
-            //"type": "cppdbg",
+            "name": "(lldb) on Mac Launch",
             "type": "lldb",
             "request": "launch",
-            //"targetArchitecture": "x86_64",
             "program": "${fileDirname}/a.out",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            //"stdio": ["${fileDirname}/input.txt","${fileDirname}/output.txt"]
             "console": "integratedTerminal",
             "environment": [],
             "externalConsole": true,
