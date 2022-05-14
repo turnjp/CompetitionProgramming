@@ -4,7 +4,7 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "AtCoder build C++",
+            "label": "Mac AtCoder build C++",
             "type": "shell",
             "command": "g++",
             "args": [
@@ -18,6 +18,25 @@
                 "-o",
                 "${fileDirname}/a.out",
                 "${file}"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Windows AtCoder build C++",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-std=gnu++17",
+                "-Wall",
+                "-Wextra",
+                "-g",
+                "-o",
+                "\"${fileDirname}/a.exe\"",
+                "\"${file}\""
             ],
             "group": {
                 "kind": "build",
