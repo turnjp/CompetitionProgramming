@@ -23,8 +23,16 @@
         },
         {
             "name": "Windows (lldb) Launch",
-            //"type": "cppdbg",
             "type": "lldb",
+            "request": "launch",
+            "program": "${fileDirname}/a.exe",
+            "args": [],
+            "cwd": "${fileDirname}",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Windows (cppdbg) Launch",
+            "type": "cppdbg",
             "request": "launch",
             //"targetArchitecture": "x86_64",
             "program": "${fileDirname}/a.exe",
@@ -32,10 +40,9 @@
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
             //"stdio": ["${fileDirname}/input.txt","${fileDirname}/output.txt"]
-            "console": "integratedTerminal",
             "environment": [],
             "externalConsole": true,
-            "MIMode": "lldb"
+            "MIMode": "gdb"
         }
     ]
 }
