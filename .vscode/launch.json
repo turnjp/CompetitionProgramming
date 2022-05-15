@@ -7,19 +7,12 @@
 
         {
             "name": "Mac (lldb) Launch",
-            //"type": "cppdbg",
             "type": "lldb",
             "request": "launch",
-            //"targetArchitecture": "x86_64",
             "program": "${fileDirname}/a.out",
             "args": [],
-            "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            //"stdio": ["${fileDirname}/input.txt","${fileDirname}/output.txt"]
-            "console": "integratedTerminal",
-            "environment": [],
-            "externalConsole": true,
-            "MIMode": "lldb"
+            "console": "integratedTerminal"
         },
         {
             "name": "Windows (lldb) Launch",
@@ -34,12 +27,10 @@
             "name": "Windows (cppdbg) Launch",
             "type": "cppdbg",
             "request": "launch",
-            //"targetArchitecture": "x86_64",
             "program": "${fileDirname}/a.exe",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            //"stdio": ["${fileDirname}/input.txt","${fileDirname}/output.txt"]
             "environment": [],
             "externalConsole": true,
             "MIMode": "gdb"
