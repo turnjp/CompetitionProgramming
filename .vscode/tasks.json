@@ -1,48 +1,49 @@
 {
-    // See https://go.microsoft.com/fwlink/?LinkId=733558
-    // for the documentation about the tasks.json format
-    "version": "2.0.0",
-    "tasks": [
-        {
-            "label": "Mac AtCoder build C++",
-            "type": "shell",
-            "command": "g++",
-            "args": [
-                "-std=gnu++17",
-                "-Wall",
-                "-Wextra",
-                "-g",
-                "-I/usr/local/include/boost",
-                "-L/usr/local/lib",
-                "-I/usr/local/ac-library",
-                "-o",
-                "${fileDirname}/a.out",
-                "${file}"
-            ],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
-            "problemMatcher": []
-        },
-        {
-            "label": "Windows AtCoder build C++",
-            "type": "shell",
-            "command": "g++",
-            "args": [
-                "-std=gnu++17",
-                "-Wall",
-                "-Wextra",
-                "-g",
-                "-o",
-                "\"${fileDirname}/a.exe\"",
-                "\"${file}\""
-            ],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
-            "problemMatcher": []
-        }
-    ]
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Mac AtCoder build C++",
+      "type": "shell",
+      "command": "g++",
+      "args": [
+        "-std=gnu++17",
+        "-Wall",
+        "-Wextra",
+        "-g",
+        "-I/usr/local/include/boost",
+        "-L/usr/local/lib",
+        "-I/usr/local/ac-library",
+        "-o",
+        "${fileDirname}/a.out",
+        "${file}"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Windows AtCoder build C++",
+      "type": "shell",
+      "command": "g++",
+      "args": [
+        "-std=gnu++17",
+        "-Wall",
+        "-Wextra",
+        "-g",
+        "-I\"C:/boost/build/include/boost-1_80\"",
+        "-o",
+        "\"${fileDirname}/a.exe\"",
+        "\"${file}\""
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": []
+    }
+  ]
 }
