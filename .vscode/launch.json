@@ -1,39 +1,38 @@
 {
-    // IntelliSense を使用して利用可能な属性を学べます。
-    // 既存の属性の説明をホバーして表示します。
-    // 詳細情報は次を確認してください: https://go.microsoft.com/fwlink/?linkid=830387
-    "version": "0.2.0",
-    "configurations": [
-
-        {
-            "name": "Mac (lldb) Launch",
-            "type": "lldb",
-            "request": "launch",
-            "program": "${fileDirname}/a.out",
-            "args": [],
-            "cwd": "${fileDirname}",
-            "console": "integratedTerminal"
-        },
-        {
-            "name": "Windows (lldb) Launch",
-            "type": "lldb",
-            "request": "launch",
-            "program": "${fileDirname}/a.exe",
-            "args": [],
-            "cwd": "${fileDirname}",
-            "console": "integratedTerminal"
-        },
-        {
-            "name": "Windows (cppdbg) Launch",
-            "type": "cppdbg",
-            "request": "launch",
-            "program": "${fileDirname}/a.exe",
-            "args": [],
-            "stopAtEntry": false,
-            "cwd": "${fileDirname}",
-            "environment": [],
-            "externalConsole": true,
-            "MIMode": "gdb"
-        }
-    ]
+  // IntelliSense を使用して利用可能な属性を学べます。
+  // 既存の属性の説明をホバーして表示します。
+  // 詳細情報は次を確認してください: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Mac (lldb) Launch",
+      "type": "lldb",
+      "request": "launch",
+      "program": "${fileDirname}/a.out",
+      "args": [],
+      "cwd": "${fileDirname}",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Windows (lldb) Launch",
+      "type": "lldb",
+      "request": "launch",
+      "program": "${fileDirname}/a.exe",
+      "args": [],
+      "cwd": "${fileDirname}",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Windows (cppdbg) Launch",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${fileDirname}/a.exe",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${fileDirname}",
+      "environment": [],
+      "externalConsole": true,
+      "MIMode": "gdb"
+    }
+  ]
 }
