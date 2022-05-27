@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define LLint long long
+typedef long long ll;
 
 int main()
 {
@@ -9,7 +9,7 @@ int main()
 
     cin >> s;
 
-    LLint cnt = 0;
+    ll cnt = 0;
     int cnt_b = 0;
 
     for (int i = 0; i < (int)s.length(); i++)
