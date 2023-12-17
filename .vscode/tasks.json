@@ -8,13 +8,13 @@
       "type": "shell",
       "command": "g++",
       "args": [
-        "-std=gnu++17",
+        "-std=c++20",
         "-Wall",
         "-Wextra",
         "-g",
-        "-I/usr/local/include/boost",
-        "-L/usr/local/lib",
-        "-I/usr/local/ac-library",
+        //"-I/usr/local/include/boost",
+        //"-L/usr/local/lib",
+        //"-I/usr/local/ac-library"*/,
         "-o",
         "${fileDirname}/a.out",
         "${file}"
