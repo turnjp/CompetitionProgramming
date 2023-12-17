@@ -10,43 +10,26 @@ const int dy[8] = {-1, 1, 0, 0, -1, 1, 1, -1};
 
 int main() {
     int n;
-
     cin >> n;
 
-    vector<int> v(100, 0);
+    int limit = 12;
+    vector<long long> ruv;
 
-    // 1 * 3
-    v[0] = 3;
-    int cnt;
-    int max_i;
-    cnt   = 1;
-    max_i = 1;
+    for(int i = 0; i < limit; i++) {
+        ruv.push_back(stoll(string((i + 1), '1')));
+    }
 
-    int i = 0;
-    while(cnt < n) {
-        if(v[i] > 0) {
-            int tmp = v[i];
-
-            v[i] = 0;
-            v[i + 1]++;
-            v[0]  = tmp - 1;
-            max_i = max(max_i, i + 1);
-
-            cnt++;
-            i = 0;
-
-        } else {
-            i++;
+    vector<long long> sumv;
+    for(int i = 0; i < limit; i++) {
+        for(int j = i; j < limit; j++) {
+            for(int k = j; k < limit; k++) {
+                sumv.push_back(ruv[i] + ruv[j] + ruv[k]);
+            }
         }
     }
+    sort(sumv.begin(), sumv.end());
 
-    long long sum = 0;
-    long long add = 1;
-    for(int i = 0; i <= max_i; i++) {
-        sum += add * v[i];
-        add = add * 10 + 1;
-    }
-    cout << sum << endl;
+    cout << sumv[n - 1] << endl;
 
     return 0;
 }
