@@ -11,19 +11,14 @@ using namespace std;
 int main() {
     long long a, m, l, r;
     cin >> a >> m >> l >> r;
+    l -= a;
+    r -= a;
 
-    long long t1 = (l - a) / m;
-    long long s = t1 * m + a;
-    if(s < l) {
-        s += m;
-    }
+    // 範囲内最も左側のツリー番号：余りを先に引いた上（グラフ上左に移動した上）で割り算。丸められるとR右隣のツリー番号になるため。
+    long long rtn = (r - (r % m + m) % m) / m;
+    long long ltn = ((l - 1) - ((l - 1) % m + m) % m) / m;
 
-    if(s > r) {
-        cout << 0 << endl;
-        return 0;
-    }
-
-    cout << (long long)(abs(s - r) / m) + 1 << endl;
+    cout << rtn - ltn << endl;
 
     return 0;
 }
