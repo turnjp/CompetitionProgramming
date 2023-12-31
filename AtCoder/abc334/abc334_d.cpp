@@ -18,42 +18,22 @@ int main() {
     }
     sort(rv.begin(), rv.end());
 
-    vector<pair<long long, int>> xv;
+    vector<long long> sv(n + 1);
+
+    // sv[i]はi-1までの累積和
+    sv[0] = 0;
+    for(int i = 1; i < n + 1; i++) {
+        sv[i] = sv[i - 1] + rv[i - 1];
+    }
+
     for(int i = 0; i < q; i++) {
         long long x;
         cin >> x;
-        xv.push_back({x, i});
-    }
-    sort(xv.begin(), xv.end());
 
-    vector<int> result_v(q);
-
-    long long sum = 0;
-    int j = 0;
-
-    for(int i = 0; i < n; i++) {
-        sum += rv[i];
-        while(j < q) {
-            if(sum > xv[j].first) {
-                int idx = xv[j].second;
-                result_v[idx] = i;
-                j++;
-            } else {
-                break;
-            }
-        }
-        if(j >= q) {
-            break;
-        }
-    }
-    while(j < q) {
-        int idx = xv[j].second;
-        result_v[idx] = n;
-        j++;
-    }
-
-    for(int i = 0; i < q; i++) {
-        cout << result_v[i] << endl;
+        int result;
+        // upper_boundで、必要トナカイ数が要求xを上回るソリ数が分かる。そこから１引くと運べるソリ数になる。
+        result = upper_bound(sv.begin(), sv.end(), x) - sv.begin() - 1;
+        cout << result << endl;
     }
 
     return 0;
