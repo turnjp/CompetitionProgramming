@@ -8,46 +8,17 @@ using namespace std;
 // const int dx[8] = {0, 0, -1, 1, 1, 1, -1, -1};
 // const int dy[8] = {-1, 1, 0, 0, -1, 1, 1, -1};
 
-vector<vector<int>> graph(9);
-map<vector<int>, int> done_map;
-
 bool success(vector<int> pv) {
-    vector<int> suc_v{0, 1, 2, 3, 4, 5, 6, 7, -1};
+    vector<int> suc_v{0, 1, 2, 3, 4, 5, 6, 7, 8};
     return pv == suc_v;
-}
-
-int rec(int depth, vector<int> pv, int empty_p) {
-    done_map[pv] = depth;
-
-    if(success(pv)) {
-        return depth;
-    }
-
-    int min_depth = INT_MAX;
-    for(auto &next_p : graph[empty_p]) {
-        // swap
-        int tmp;
-        tmp = pv[next_p];
-        pv[next_p] = pv[empty_p];
-        pv[empty_p] = tmp;
-
-        if(done_map.find(pv) == done_map.end() || done_map[pv] > depth + 1) {
-            min_depth = min(min_depth, rec(depth + 1, pv, next_p));
-        }
-
-        tmp = pv[next_p];
-        pv[next_p] = pv[empty_p];
-        pv[empty_p] = tmp;
-    }
-
-    return min_depth;
 }
 
 int main() {
     int m;
     cin >> m;
-    vector<int> pv(9, -1);
-    int empty_p;
+    vector<vector<int>> graph(9);
+    set<vector<int>> done_set;
+    vector<int> pv(9, -1); // コマjがどの頂点にあるか。コマ8は空を表す
 
     for(int i = 0; i < m; i++) {
         int u, v;
@@ -58,25 +29,49 @@ int main() {
         graph[v].push_back(u);
     }
 
+    vector<bool> fv(9, true);
     for(int i = 0; i < 8; i++) {
         int p;
         cin >> p;
         p -= 1;
-        pv[p] = i; // 頂点pにコマiが置かれている
+        pv[i] = p; // コマiは頂点pに置かれている
+        fv[p] = false;
     }
+
+    // コマ8（空）はどこか
     for(int i = 0; i < 9; i++) {
-        if(pv[i] == -1) {
-            empty_p = i;
+        if(fv[i]) {
+            pv[8] = i;
             break;
         }
     }
 
-    int result = rec(0, pv, empty_p);
-    if(result != INT_MAX) {
-        cout << result << endl;
-    } else {
-        cout << -1 << endl;
+    queue<pair<vector<int>, int>> q;
+    pair<vector<int>, int> next = {pv, 0};
+    while(!success(next.first)) {
+        for(auto add : graph[next.first[8]]) {
+            int tmp;
+            tmp = next.first[add];
+            next.first[add] = next.first[8];
+            next.first[8] = tmp;
+            if(done_set.find(next.first) == done_set.end()) {
+                q.push({next.first, next.second + 1});
+                done_set.insert(next.first);
+            }
+            tmp = next.first[add];
+            next.first[add] = next.first[8];
+            next.first[8] = tmp;
+        }
+
+        if(q.empty()) {
+            cout << -1 << endl;
+            return 0;
+        }
+
+        next = q.front();
+        q.pop();
     }
+    cout << next.second << endl;
 
     return 0;
 }
