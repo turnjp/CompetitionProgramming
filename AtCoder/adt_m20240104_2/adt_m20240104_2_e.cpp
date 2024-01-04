@@ -15,6 +15,8 @@ int main() {
     vector<string> t_rotate(w);
     map<string, int> s_col_cnt_map;
     map<string, int> t_col_cnt_map;
+
+    // 列ごとに文字列を保持（いつもの行ではなく）
     for(int i = 0; i < h; i++) {
         for(int j = 0; j < w; j++) {
             char ch;
@@ -30,27 +32,19 @@ int main() {
         }
     }
 
+    // 列ごとに件数をカウント
     for(auto &col : s_rotate) {
-        if(s_col_cnt_map.find(col) == s_col_cnt_map.end()) {
-            s_col_cnt_map[col] = 0;
-        }
         s_col_cnt_map[col]++;
     }
-
     for(auto &col : t_rotate) {
-        if(t_col_cnt_map.find(col) == t_col_cnt_map.end()) {
-            t_col_cnt_map[col] = 0;
-        }
         t_col_cnt_map[col]++;
     }
 
-    for(const auto &[key_s, cnt] : t_col_cnt_map) {
-        if(s_col_cnt_map[key_s] != cnt) {
-            cout << "No" << endl;
-            return 0;
-        }
+    // 同一か
+    if(t_col_cnt_map == s_col_cnt_map) {
+        cout << "Yes" << endl;
+    } else {
+        cout << "No" << endl;
     }
-
-    cout << "Yes" << endl;
     return 0;
 }
