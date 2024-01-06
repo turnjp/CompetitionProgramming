@@ -38,10 +38,11 @@ int main() {
             if(c != -1) {
                 sum += c;
             } else {
-                max_sum = max(max_sum, sum);
                 break;
             }
         }
+        max_sum = max(max_sum, sum);
+
     } while(next_permutation(cp.begin(), cp.end()));
 
     cout << max_sum << endl;
