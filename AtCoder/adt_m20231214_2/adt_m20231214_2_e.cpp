@@ -12,14 +12,14 @@ int main() {
     int n, m;
     cin >> n >> m;
 
-    vector<int> av(n);
+    vector<long long> av(n);
     for(int i = 0; i < n; i++) {
         cin >> av[i];
     }
 
-    long long max_sum = -1;
+    long long max_sum = LLONG_MIN;
 
-    for(int i = 0; i < n; i++) {
+    for(int i = 0; i <= n - m; i++) {
         long long sum = 0;
         for(int j = 0; j < m; j++) {
             sum += (j + 1) * av[i + j];
