@@ -14,7 +14,8 @@
         "-g",
         //"-I/usr/local/include/boost",
         //"-L/usr/local/lib",
-        //"-I/usr/local/ac-library"*/,
+        "-I",
+        "/usr/local/ac-library",
         "-o",
         "${fileDirname}/a.out",
         "${file}"
