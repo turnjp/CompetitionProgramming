@@ -8,12 +8,12 @@ bool in_mass(int y, int x, int h, int w) {
 }
 
 // 8方向差分
-const int dx[8] = {0, 0, -1, 1, 1, 1, -1, -1};
-const int dy[8] = {-1, 1, 0, 0, -1, 1, 1, -1};
+const int dx8[8] = {0, 0, -1, 1, 1, 1, -1, -1};
+const int dy8[8] = {-1, 1, 0, 0, -1, 1, 1, -1};
 
 // 4方向差分
-// const int dx[8] = {0, 0, -1, 1};
-// const int dy[8] = {-1, 1, 0, 0};
+const int dx4[8] = {0, 0, -1, 1};
+const int dy4[8] = {-1, 1, 0, 0};
 
 // k進法sを10進法へ変換
 long long to_dec_sys(string s, long long k) {
