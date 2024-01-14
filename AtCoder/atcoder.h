@@ -11,6 +11,10 @@ bool in_mass(int y, int x, int h, int w) {
 const int dx[8] = {0, 0, -1, 1, 1, 1, -1, -1};
 const int dy[8] = {-1, 1, 0, 0, -1, 1, 1, -1};
 
+// 4方向差分
+// const int dx[8] = {0, 0, -1, 1};
+// const int dy[8] = {-1, 1, 0, 0};
+
 // k進法sを10進法へ変換
 long long to_dec_sys(string s, long long k) {
     long long ans = 0;
