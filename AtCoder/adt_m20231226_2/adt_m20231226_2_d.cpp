@@ -13,16 +13,10 @@ int main() {
     }
     sort(x.begin(), x.end());
 
-    for(int i = 0; i < n; i++) {
-        x.erase(x.begin());
-    }
-
-    for(int i = 0; i < n; i++) {
-        x.erase(x.end() - 1);
-    }
-
     cout << fixed << setprecision(15)
-         << accumulate(x.begin(), x.end(), 0) / (double)x.size() << endl;
+         << accumulate(x.begin() + n, x.end() - n, 0) /
+                ((double)x.size() * 3 / 5)
+         << endl;
 
     return 0;
 }
