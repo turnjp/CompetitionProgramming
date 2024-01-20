@@ -12,22 +12,30 @@ int main() {
     int n, m;
     cin >> n >> m;
 
-    vector<long long> av(n);
-    for(int i = 0; i < n; i++) {
+    vector<long long> av(n + 1);
+    for(int i = 1; i <= n; i++) {
         cin >> av[i];
     }
 
-    long long max_sum = LLONG_MIN;
-
-    for(int i = 0; i <= n - m; i++) {
-        long long sum = 0;
-        for(int j = 0; j < m; j++) {
-            sum += (j + 1) * av[i + j];
-        }
-        max_sum = max(max_sum, sum);
+    vector<long long> sum_i(n + 1, 0);
+    sum_i[1] = 2 * av[1];
+    for(int i = 2; i <= n; i++) {
+        sum_i[i] = sum_i[i - 1] + (i + 1) * av[i];
     }
 
-    cout << max_sum << endl;
+    vector<long long> sum(n + 1, 0);
+    sum[1] = av[1];
+    for(int i = 2; i <= n; i++) {
+        sum[i] = sum[i - 1] + av[i];
+    }
+
+    long long max_v = LLONG_MIN;
+    for(int l = 1; l <= n - m + 1; l++) {
+        max_v = max(max_v, sum_i[m + l - 1] - sum_i[l - 1] -
+                               l * (sum[m + l - 1] - sum[l - 1]));
+    }
+
+    cout << max_v << endl;
 
     return 0;
 }
