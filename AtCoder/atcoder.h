@@ -1,3 +1,4 @@
+/* コピー＆ペースト用 */
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -14,6 +15,16 @@ const int dy8[8] = {-1, 1, 0, 0, -1, 1, 1, -1};
 // 4方向差分
 const int dx4[8] = {0, 0, -1, 1};
 const int dy4[8] = {-1, 1, 0, 0};
+
+// 回転
+vector<vector<int>> rotate(vector<vector<int>> a) {
+    int n = a.size();
+    vector<vector<int>> rot(n, vector<int>(n));
+    for(int i = 0; i < n; i++)
+        for(int j = 0; j < n; j++)
+            rot[j][(n - 1) - i] = a[i][j];
+    return rot;
+}
 
 // k進法sを10進法へ変換
 long long to_dec_sys(string s, long long k) {
