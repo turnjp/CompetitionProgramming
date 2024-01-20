@@ -8,26 +8,17 @@ int main() {
     int n, x, y;
     cin >> n >> x >> y;
 
-    vector<long long> blue_cnt(10, 0);
-    vector<long long> red_cnt(10, 0);
-    red_cnt[n] = 1;
+    vector<long long> blue_cnt(n + 1, 0);
+    vector<long long> red_cnt(n + 1, 0);
+    blue_cnt[1] = 1;
+    red_cnt[1] = 0;
 
-    for(int lv = n; lv > 1; lv--) {
-        if(red_cnt[lv] > 0) {
-            long long tmp = red_cnt[lv];
-            red_cnt[lv] = 0;
-            red_cnt[lv - 1] += tmp;
-            blue_cnt[lv] += x * tmp;
-        }
-        if(blue_cnt[lv] > 0) {
-            long long tmp = blue_cnt[lv];
-            blue_cnt[lv] = 0;
-            red_cnt[lv - 1] += tmp;
-            blue_cnt[lv - 1] += y * tmp;
-        }
+    for(int lv = 2; lv <= n; lv++) {
+        blue_cnt[lv] = red_cnt[lv - 1] + blue_cnt[lv - 1] * y;
+        red_cnt[lv] = red_cnt[lv - 1] + blue_cnt[lv] * x;
     }
 
-    cout << blue_cnt[1] << endl;
+    cout << red_cnt[n] << endl;
 
     return 0;
 }
