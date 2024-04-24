@@ -4,42 +4,36 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Mac AtCoder build C++",
+      "label": "AtCoder build C++",
       "type": "shell",
       "command": "g++",
-      "args": [
-        "-std=c++20",
-        "-Wall",
-        "-Wextra",
-        "-g",
-        //"-I/usr/local/include/boost",
-        //"-L/usr/local/lib",
-        "-I",
-        "/usr/local/ac-library",
-        "-o",
-        "${fileDirname}/a.out",
-        "${file}"
-      ],
-      "group": {
-        "kind": "build",
-        "isDefault": true
+      "osx": {
+        "args": [
+          "-std=c++20",
+          "-Wall",
+          "-Wextra",
+          "-g",
+          //"-I/usr/local/include/boost",
+          //"-L/usr/local/lib",
+          "-I",
+          "/usr/local/ac-library",
+          "-o",
+          "${fileDirname}/a.out",
+          "${file}"
+        ]
       },
-      "problemMatcher": []
-    },
-    {
-      "label": "Windows AtCoder build C++",
-      "type": "shell",
-      "command": "g++",
-      "args": [
-        "-std=gnu++17",
-        "-Wall",
-        "-Wextra",
-        "-g",
-        "-I\"C:/boost/build/include/boost-1_80\"",
-        "-o",
-        "\"${fileDirname}/a.exe\"",
-        "\"${file}\""
-      ],
+      "windows": {
+        "args": [
+          "-std=gnu++17",
+          "-Wall",
+          "-Wextra",
+          "-g",
+          "-I\"C:/boost/build/include/boost-1_80\"",
+          "-o",
+          "\"${fileDirname}/a.exe\"",
+          "\"${file}\""
+        ]
+      },
       "group": {
         "kind": "build",
         "isDefault": true
